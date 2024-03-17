@@ -232,7 +232,7 @@ def getSubscriptionDate(profile):
                 next_date = current_datetime + relativedelta(months=1)
                 next_month = returnMonth(next_date.month)
                 year = next_date.year
-                return 'Plan Validity: {} {} {}. Word Limit: 40000 Words'.format(next_date.day, next_month, year)
+                return 'Plan Validity: {} {} {}. Word Limit: Unlimited Words'.format(next_date.day, next_month, year)
             
             elif subDate < current_datetime:
                 profile.subscribed = False

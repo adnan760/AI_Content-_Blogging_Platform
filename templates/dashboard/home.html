@@ -33,7 +33,7 @@
                 <h5 class="card-title text-primary">Welcome {{user.first_name}}! 🎉</h5>
                 <p class="mb-4">
                   You have generated <span class="fw-bold">{{numBlogs}}</span> Blogs. Your word count for the month is
-                  <span class="fw-bold">{{monthCount}}</span> words. Your count will reset on <span class="fw-bold">{{countReset}}</span>
+                  <span class="fw-bold">{{monthCount}}</span> words.<span class="fw-bold">{{countReset}}</span>
                 </p>
 
                 <a href="{% url "blog-topic" %}" class="btn btn-sm btn-outline-primary">Generate a New Blog</a>
@@ -96,7 +96,7 @@
                 <h5 class="card-title text-primary">Welcome {{user.first_name}}! 🎉</h5>
                 <p class="mb-4">
                   You have generated <span class="fw-bold">{{numBlogs}}</span> Blogs. Your word count for the month is
-                  <span class="fw-bold">{{monthCount}}</span> words. Your count will reset on <span class="fw-bold">{{countReset}}</span>
+                  <span class="fw-bold">{{monthCount}}</span> words. <span class="fw-bold">{{countReset}}</span>
                 </p>
 
                 <a href="{% url "blog-topic" %}" class="btn btn-sm btn-outline-primary">Generate a New Blog</a>
