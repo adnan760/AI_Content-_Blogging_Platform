@@ -1,0 +1,138 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Billing</h4>
+
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-pills flex-column flex-md-row mb-3">
+        <li class="nav-item">
+          <a class="nav-link active" href="#"><i class="bx bx-user me-1"></i> Billing</a>
+        </li>
+      </ul>
+
+
+      <div class="card">
+        <h5 class="card-header">Billing Information</h5>
+        <div class="card-body">
+          <div class="mb-3 col-12 mb-0">
+
+            <script src="https://www.paypal.com/sdk/js?client-id=AXo_z0zugunUerqj3hIWO0W_NqJV7vcZ0GTJjLeUYT47KS-BGtuSAp5NQ2G9gunuWzLegPBXyF-rhwma&vault=true&intent=subscription"></script>
+
+            {% if user.profile.subscriptionType == 'free' %}
+            <div class="alert alert-warning">
+              <h6 class="alert-heading fw-bold mb-1">You are currently on the Free Tier</h6>
+              <p class="mb-0">Upgrade to starter tier to get upto 40000 words per month. You can cancel your subscription at any time, no strings attached.</p>
+            </div>
+            <div id="paypal-button-container-1"></div>
+
+
+            {% elif user.profile.subscriptionType == 'starter' %}
+            <div class="alert alert-success">
+                <h6 class="alert-heading fw-bold mb-1">You are currently on the Starter Tier</h6>
+                <p class="mb-0">You can cancel your subscription at any time, no strings attached. Upgrade to advanced tier to get unlimited words per month</p>
+                <P>Next Billing Date: <strong>{{nextBillingDate}}</strong></p>
+            </div>
+              <h5>Or you can upgrade now to Advanced and get unlimited characters</h5>
+              <P>Words used this month: <strong>{{user.profile.monthlyCount}}</strong></p>
+              <P>Monthly Limit: <strong>40,000 Words</strong></p>
+              <div id="paypal-button-container-2"></div>
+
+
+            {% elif user.profile.subscriptionType == 'advanced' %}
+            <div class="alert alert-success">
+                <h6 class="alert-heading fw-bold mb-1">You are currently on the Advanced Tier</h6>
+                <p class="mb-0">You can cancel your subscription at any time, no strings attached. You have unlimited words per month.</p>
+                <P>Next Billing Date: <strong>{{nextBillingDate}}</strong></p>
+              </div>
+            {% else %}
+            <h2>Something went wrong!</h2>
+            {% endif %}
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+<!-- / Content -->
+
+{% endblock%}
+
+
+{% block js %}
+<script>
+    paypal.Buttons({
+        createSubscription(data, actions) {
+            return actions.subscription.create({
+                'plan_id': 'P-01A86210SF516313TMXNSTTQ' // Creates the starter plan subscription
+            });
+        },
+        onApprove(data, actions) {
+            // ***********
+            $.ajax({
+                type: "POST",
+                url: "{% url 'payment-success' %}",
+                data: {
+                    'subscriptionID': data.subscriptionID,
+                    'userId':"{{user.profile.uniqueId|safe}}",
+                    'type':'starter',
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success(data) {
+                    if (data.result == 'SUCCESS'){
+                        window.location.href = "{% url 'billing' %}"
+                    }
+
+                    if(data.result == 'FAIL'){
+                        alert('Something went wrong!')
+                    }
+                }
+                }); 
+        },
+        onCancel(data){
+            alert("You have cancelled your payment!"); // When transaction is cancelled
+        }
+    }).render('#paypal-button-container-1'); // Renders the PayPal button
+</script>
+
+<script>
+    paypal.Buttons({
+        createSubscription(data, actions) {
+            return actions.subscription.create({
+                'plan_id': 'P-9T402193C2220640RMXNSUXY' // Creates the starter plan subscription
+            });
+        },
+        onApprove(data, actions) {
+            $.ajax({
+                type: "POST",
+                url: "{% url 'payment-success' %}",
+                data: {
+                    'subscriptionID': data.subscriptionID,
+                    'userId':"{{user.profile.uniqueId|safe}}",
+                    'type':'advanced',
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success(data) {
+                    if (data.result == 'SUCCESS'){
+                        if (data.result == 'SUCCESS'){
+                            console.log(data.subscriptionID)
+                            window.location.href = "{% url 'billing' %}"
+                        }
+    
+                        if(data.result == 'FAIL'){
+                            alert('Something went wrong!')
+                        }
+                    }
+                }
+                });  
+        },
+        onCancel(data){
+            alert("You have cancelled your payment!"); // When transaction is cancelled
+        }
+    }).render('#paypal-button-container-2'); // Renders the PayPal button
+</script>
+{% endblock %}

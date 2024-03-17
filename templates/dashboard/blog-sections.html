@@ -1,0 +1,62 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+
+{% block body %}
+
+<!-- Content -->
+
+<div class="container-fluid flex-grow-1 container-p-y">
+            
+    <div class="layout-demo-wrapper">
+      
+    <div class="row">
+        
+
+        <div class="col-lg-12">
+
+            <div class"row">
+                <div class="col-lg-12">
+                    <h2 class="mb-3">We have generated these possible blog topics ideas for you. </h2>
+
+                    <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Blog Title</th>
+
+                        <th>Save Topic</th>
+
+                        <th>Use Topic</th>
+                    
+                    </tr>
+                    </thead>
+
+
+                    <tbody>
+                    {% for blog in blogTopics %}
+                    <tr>
+                        <td>{{blog}}</td>
+                        <td><a href="{% url "save-blog-topic" blog %}"><button class="btn btn-outline-primary">Save</button></a></td>
+                        <td><a href="{% url "use-blog-topic" blog %}"><button class="btn btn-primary">Use</button></a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+
+                </div>
+                
+            </div>
+        </div>
+            {% comment %} <div class="col-lg-4">
+                                
+            <img class="img-fluid" src="{% static "admin/img/blog_title_illus.svg" %}" alt="Create-Blog">
+                                
+            </div> {% endcomment %}
+
+
+        <div class="col-lg-1"></div>
+    </div>
+    
+  </div>
+  <!-- / Content -->
+
+{% endblock %}

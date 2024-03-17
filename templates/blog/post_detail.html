@@ -1,0 +1,103 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<!-- Content -->
+
+<div class="container-fluid flex-grow-1 container-p-y">
+            
+    <div class="layout-demo-wrapper">
+      
+        <div class="container">
+            <div class="row mt-5 pt-3">
+                <div class="col-md-8 offset-md-2">
+                    <div class="card my-3 shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                {%if post.author.profile.profileImage.name%}
+                                <div class="col-md-4">
+                                    <img class="img-thumbnail" src="{{post.author.profile.profileImage.url}}" width=100% alt="img">
+                                </div>
+                                {%else%}
+                                <div class="col-md-4">
+                                    <img class="img-thumbnail" src="{% static 'main/img/avatars/1.png' %}" alt="img">
+                                </div>
+                                {%endif%}
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <small>{{ post.date_created }}</small>
+                                        </div>
+                                        <div class="col-md-4 mt-1">
+                                            {% if post.author == request.user %}
+                                            <span><a class="btn btn-danger float-right btn-sm"
+                                                    href="{% url 'blog-post-delete' post.id %}">Delete</a></span>
+                                            <span><a class="btn btn-primary mx-2 float-right btn-sm "
+                                                    href="{% url 'blog-post-edit' post.id %}">Edit</a></span>
+                                            {% endif %}
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <hr>
+                                    <h4>{{ post.title }}</h4>
+                                    <p>
+                                        {{ post.content | linebreaksbr }}
+                                    </p>
+                                
+                            
+                            <p class="mt-6 pt-6">
+                                <a class="" data-bs-toggle="collapse" href="#collapseExample" 
+                                role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Comments: {{ post.comment_count }}
+                                </a>
+                            </p>
+                            {%if request.user.first_name%}
+                            <div class="collapse" id="collapseExample">
+                                <div style="height: 250px; overflow-y: scroll;" class="card card-body">
+                                    {% for comment in post.comments %}
+                                    <p class="text-justify">
+                                    <div class="row">
+                                        
+                                        <div class="col-md-3">
+                                            {{ comment.user.first_name }}
+                                        </div>
+                                        <div class="col-md-9">
+                                            {{ comment.content }}
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    </p>
+                                    {% endfor %}
+
+                                </div>
+                                
+                            </div>
+                            <div class="mt-1">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ c_form|crispy }}
+                                <input class="btn btn-primary btn-sm mt-2" type="submit" value="Add Comment">
+                            </form>
+                            </div>
+                            {%else%}
+                            <div class="alert alert-danger col-md-6" role="alert">
+                            Set up your profile to view or add comment
+                            </div>
+                            {%endif%}
+                        </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+  </div>
+  <!-- / Content -->
+
+{% endblock %}

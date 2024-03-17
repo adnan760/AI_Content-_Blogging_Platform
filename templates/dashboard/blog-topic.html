@@ -1,0 +1,76 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+
+{% block body %}
+
+<!-- Content -->
+
+<div class="container-fluid flex-grow-1 container-p-y">
+            
+    <div class="layout-demo-wrapper">
+      
+    <div class="row">
+
+      <div class="col-lg-1"></div>
+    
+
+        <div class="col-lg-12">
+            <div class"row">
+
+                <div class="col-lg-12">
+                    <h2 class="mb-3">Enter your blog idea below to generate blog topic suggestions</h2>
+                    <form class="" action="" method = "post">
+                        {% csrf_token %}
+
+                        
+
+                        <div class="mb-3">
+                            <label for="blogIdea" class="form-label">Blog Idea</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="blogIdea"
+                              placeholder="Enter the blog idea"
+                              autofocus
+                              required
+                            />
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="audience" class="form-label">Blog Audience</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="audience"
+                              placeholder="Who is this blog targeted at? "
+                              autofocus
+                            />
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="keywords" class="form-label">Keywords</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="keywords"
+                              placeholder="Enter the keywords that relates to the idea"
+                              autofocus
+                              
+                            />
+                          </div>
+
+                          <div class="mb-3">
+                            <button class="btn btn-primary d-grid w-100" type="submit">Generate Blog Topic Ideas</button>
+                          </div>
+
+                    </form>    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+  </div>
+  <!-- / Content -->
+
+{% endblock %}

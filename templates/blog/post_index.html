@@ -1,0 +1,63 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<!-- Content -->
+
+<div class="container-fluid flex-grow-1 container-p-y">
+            
+    <div class="layout-demo-wrapper">
+      
+        <div class="container">
+            <div class="row mt-3 pt-3">
+                <div class="col-md-5">
+                    <div class="card my-3 shadow">
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <input class="btn btn-primary btn-block" type="submit" value="Post">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    {% for post in posts %}
+                    <div class="card shadow my-3">
+                        <div class="card-body">
+                            <div class="row">
+                                {%if post.author.profile.profileImage.name%}
+                                <div class="col-md-4">
+                                    <img class="img-thumbnail" src="{{post.author.profile.profileImage.url}}" width=100% alt="img">
+                                </div>
+                                {%else%}
+                                <div class="col-md-4">
+                                    <img class="img-thumbnail" src="{% static 'main/img/avatars/1.png' %}" alt="img">
+                                </div>
+                                {%endif%}
+                                <div class="col-md-8">
+                                    <small>{{ post.date_created }}</small>
+                                    <hr>
+                                    <a class="h3" href="{% url 'blog-post-detail' post.id %}">{{ post.title }}</a>
+                                    <div class="card-text-scrollable">
+                                    <p class="text-justify my-3" style="overflow: hidden; display: -webkit-box; -webkit-line-clamp: 8; -webkit-box-orient: vertical;">
+                                        {{ post.content | safe }}
+                                    </p>
+                                   </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+  </div>
+  <!-- / Content -->
+
+{% endblock %}

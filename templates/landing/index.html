@@ -1,0 +1,164 @@
+{%extends 'layout/landing.html'%}
+{%load static%}
+
+{%block body%}
+<div class="container">
+  <div class="page-banner home-banner">
+    <div class="row align-items-center flex-wrap-reverse h-100">
+      <div class="col-md-6 py-5 wow fadeInLeft">
+        <h1 class="mb-4">Meet WordWise!</h1>
+        <p class="text-lg text-grey mb-5 my-3">Welcome to WordWise, the AI-powered content blogging platform that will revolutionize the way you create and share content. <br> <br> With just a few clicks, WordWise can generate high-quality, content that will impress your readers and boost your online presence.</p>
+        <a href="{% url "login" %}" class="btn btn-primary btn-primary">Get Started</a>
+      </div>
+      <div class="col-md-6 py-5 wow zoomIn">
+        <div class="img-fluid text-center">
+          <img src="{% static 'landing/img/illustration_1.svg' %}" alt="illustration_1" width="90%">
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="btn-scroll" data-role="smoothscroll"><span class="mai-arrow-down"></span></a>
+  </div>
+</div>
+</header>
+
+<div class="page-section">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card-service wow fadeInUp">
+        <div class="header">
+          <img src="{% static "landing/img/services/service-3.svg" %}" alt="">
+        </div>
+        <div class="body">
+          <h5 class="text-secondary">Blog Writing Assistance</h5>
+          <p>The AI-powered blog assistant generates posts based on your needs, saving you time.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card-service wow fadeInUp">
+        <div class="header">
+          <img src="{% static "landing/img/services/service-3.svg" %}" alt="">
+        </div>
+        <div class="body">
+          <h5 class="text-secondary">Content Marketing</h5>
+          <p>Looking to create marketing content that resonates with your target audience? Reach out to WordWise.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card-service wow fadeInUp">
+        <div class="header">
+          <img src="{% static "landing/img/services/service-3.svg" %}" alt="">
+        </div>
+        <div class="body">
+          <h5 class="text-secondary">Social Media Help</h5>
+          <p>
+            The AI social media content service creates engaging, high-quality content for your social media.</p>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- .container -->
+</div> <!-- .page-section -->
+
+
+<!-- Banner info -->
+<div class="page-section banner-info">
+  <div class="wrap bg-image" style="background-image: url({% static "landing/img/bg_pattern.svg" %});">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 py-3 pr-lg-5 wow fadeInUp">
+          <h2 class="title-section">AI Powered Content Creation</h2>
+          <div class="divider"></div>
+          <p>If you are looking for an AI-Powered content creation assistant, look no further than WordWise. This tool uses artificial intelligence to help you generate high quality content for your website or blog. With WordWise, you can easily brainstorm ideas, research topics, and create well-written, informative blog posts quickly and easily.</p>
+          <p>Get started for Free with WordWise and see what WordWise can do for you.</p>
+          <a href="{% url "login" %}" class="btn btn-primary mt-3">Read More</a>
+        </div>
+        <div class="col-lg-6 py-3 wow fadeInRight">
+          <div class="img-fluid text-center">
+            <img src="{% static "landing/img/banner_image_2.svg" %}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- .wrap -->
+  </div> <!-- .page-section -->
+
+
+<div class="page-section">
+  <div class="container">
+    <div class="text-center wow fadeInUp">
+      <div class="subhead">Pricing Plan</div>
+      <h2 class="title-section">Choose plan the right for you</h2>
+      <div class="divider mx-auto"></div>
+    </div>
+    <div class="row mt-5">
+      <div class="col-lg-4 py-3 wow zoomIn">
+        <div class="card-pricing">
+          <div class="header">
+            <div class="pricing-type">Free</div>
+            <div class="price">
+              <span class="dollar">$</span>
+              <h1>0<span class="suffix">.00</span></h1>
+            </div>
+            <h5>For Lifetime</h5>
+          </div>
+          <div class="body">
+            <p>5000 characters</p>
+            <p>All use cases</p>
+          </div>
+          <div class="footer">
+            <a href="{% url "login" %}" class="btn btn-pricing btn-block">Subscribe</a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-4 py-3 wow zoomIn">
+        <div class="card-pricing marked">
+          <div class="header">
+            <div class="pricing-type">Starter Writer</div>
+            <div class="price">
+              <span class="dollar">$</span>
+              <h1>9<span class="suffix">.00</span></h1>
+            </div>
+            <h5>Per Month</h5>
+          </div>
+          <div class="body">
+            <p>40000 characters</p>
+            <p>All use cases</p>
+
+          </div>
+          <div class="footer">
+            <a href="{% url "login" %}" class="btn btn-pricing btn-block">Subscribe</a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-lg-4 py-3 wow zoomIn">
+        <div class="card-pricing">
+          <div class="header">
+            <div class="pricing-type">Advanced Writer</div>
+            <div class="price">
+              <span class="dollar">$</span>
+              <h1>29<span class="suffix">.00</span></h1>
+            </div>
+            <h5>Per Month</h5>
+          </div>
+          <div class="body">
+            <p>Unlimited characters</p>
+            <p>All use cases</p>
+          </div>
+          <div class="footer">
+            <a href="{% url "login" %}" class="btn btn-pricing btn-block">Subscribe</a>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div> <!-- .container -->
+</div> <!--Page section-->
+
+
+{%endblock%}

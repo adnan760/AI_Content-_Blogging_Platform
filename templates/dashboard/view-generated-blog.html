@@ -1,0 +1,54 @@
+{% extends "layout/dashboard.html" %}
+{% load static %}
+
+{% block body %}
+
+<!-- Content -->
+
+<div class="container-fluid flex-grow-1 container-p-y">
+            
+    <div class="layout-demo-wrapper">
+      
+    <div class="row">
+        
+        {%if not messages%}
+        <div class="col-lg-7">
+            <h2 class="mb-3">Your blog is ready</h2>
+
+            <h2 class="mb-3">{{blog.title}}</h2>
+        </div>
+            <h5>Keywords: <span class="badge bg-primary">{{blog.keywords}}</span></h5>
+
+            {% for section in blogSections %}
+            
+            
+            <div class="mt-3">
+                <h3>{{section.title}}</h3>
+                {{section.body|safe}}
+
+            </div>
+            {% endfor %}
+                                
+            </div>
+
+            <div class="mt-3">
+                <a href="{% url "post-blog-topic" blog.uniqueId %}"><button class="btn btn-primary">Post</button></a>
+            <div>
+        
+        <div class="col-lg-1"></div>
+        {%else%}
+
+        <div class="messages" style="font-size: 32px;" >
+            {% for message in messages %}
+            {{message}}
+            {% endfor%}
+        </div>
+        {%endif%}
+    </div>
+    
+  </div>
+  <!-- / Content -->
+
+{% endblock %}
+
+
