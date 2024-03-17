@@ -105,7 +105,7 @@ DATABASES = {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'wordwisedb',
 #         'USER':'wordwisedbuser',
-#         'PASSWORD':'user7680',
+#         'PASSWORD':'',
 #         'HOST':'localhost',
 #         'PORT':'',
 #     }
