@@ -92,7 +92,7 @@ WSGI_APPLICATION = 'wordwise.wsgi.application'
 # Deployment configuration for DB to connect with deployment database 
 DATABASES = {
     'default':dj_database_url.config (
-        default='sqlite:///' + os.path.join('db.sqlite3')
+        default='sqlite:///' + os.path.join(BASE_DIR,'db.sqlite3')
     )
 }
 
