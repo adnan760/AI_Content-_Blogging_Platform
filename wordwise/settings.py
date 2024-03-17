@@ -89,21 +89,14 @@ WSGI_APPLICATION = 'wordwise.wsgi.application'
 
 # Database
 
-# Deployment configuration for DB to connect with deployment database 
-DATABASES = {
-    'default':dj_database_url.config (
-        default='sqlite:///' + os.path.join(BASE_DIR,'db.sqlite3')
-    )
-}
-
 
 #Default SQLite DB
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Local PostgreSQL DB
