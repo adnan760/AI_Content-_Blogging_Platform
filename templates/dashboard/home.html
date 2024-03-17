@@ -32,7 +32,7 @@
               <div class="card-body">
                 <h5 class="card-title text-primary">Welcome {{user.first_name}}! 🎉</h5>
                 <p class="mb-4">
-                  You have written <span class="fw-bold">{{numBlogs}}</span> Blogs. Your word count for the month is
+                  You have generated <span class="fw-bold">{{numBlogs}}</span> Blogs. Your word count for the month is
                   <span class="fw-bold">{{monthCount}}</span> words. Your count will reset on <span class="fw-bold">{{countReset}}</span>
                 </p>
 
@@ -53,7 +53,7 @@
 
         {% if completedBlogs|length > 0 %}
         <div class="card mt-3">
-          <h5 class="card-header">Completed Blogs</h5>
+          <h5 class="card-header">Generated Blogs</h5>
           <div class="table-responsive">
             <table class="table">
               <thead>
@@ -93,9 +93,9 @@
           <div class="d-flex align-items-end row">
             <div class="col-sm-7">
               <div class="card-body">
-                <h5 class="card-title text-primary">Congratulations {{user.first_name}}! 🎉</h5>
+                <h5 class="card-title text-primary">Welcome {{user.first_name}}! 🎉</h5>
                 <p class="mb-4">
-                  You have written <span class="fw-bold">{{numBlogs}}</span> Blogs. Your word count for the month is
+                  You have generated <span class="fw-bold">{{numBlogs}}</span> Blogs. Your word count for the month is
                   <span class="fw-bold">{{monthCount}}</span> words. Your count will reset on <span class="fw-bold">{{countReset}}</span>
                 </p>
 
@@ -116,7 +116,7 @@
 
         {% if completedBlogs|length > 0 %}
         <div class="card mt-3">
-          <h5 class="card-header">Completed Blogs</h5>
+          <h5 class="card-header">Generated Blogs</h5>
           <div class="table-responsive">
             <table class="table">
               <thead>
