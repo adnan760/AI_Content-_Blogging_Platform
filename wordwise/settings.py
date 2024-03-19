@@ -166,6 +166,8 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Paypal Window conifig
+SECURE_CROSS_ORIGIN_OPENER_POLICY='same-origin-allow-popups'
 
 # Django image resizng setting
 DJANGORESIZED_DEFAULT_SIZE = [500, 500]
