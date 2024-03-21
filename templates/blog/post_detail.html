@@ -22,7 +22,7 @@
                                 </div>
                                 {%else%}
                                 <div class="col-md-4">
-                                    <img class="img-thumbnail" src="{% static 'main/img/avatars/1.png' %}" alt="img">
+                                    <img class="img-thumbnail" src="{% static 'main/img/favicon/profile.png' %}" alt="img">
                                 </div>
                                 {%endif%}
                                 <div class="col-md-8">
@@ -54,7 +54,7 @@
                                     Comments: {{ post.comment_count }}
                                 </a>
                             </p>
-                            {%if request.user.first_name%}
+                            {% if user.profile.profileImage.name and request.user.first_name %}
                             <div class="collapse" id="collapseExample">
                                 <div style="height: 250px; overflow-y: scroll;" class="card card-body">
                                     {% for comment in post.comments %}
